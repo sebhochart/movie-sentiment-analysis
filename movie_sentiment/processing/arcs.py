@@ -65,11 +65,22 @@ def get_all_arcs():
 
 
 def get_all_polynomials():
+    '''Creates a DataFrame of polynomial values of movie arcs to feed our model
+    Columns of the DataFrame are 'movie_name' and then ids
+    '''
 
     arcs = get_all_arcs()
-    poly = {}
+    poly = []
 
+    # creating a list with the movie name and the coefficients
     for key, value in arcs.items():
-        poly[key] = script_2_polynomial(value)
+        row = script_2_polynomial(value)
+        row.insert(0, key)
+        poly.append(row)
 
-    return pd.DataFrame(poly)
+    # creating the columns name of the DataFrame
+    columns_id= [x for x in range(len(poly[0]) - 1)]
+    columns_id.insert(0, 'movie_name')
+
+    # returning the DataFrame
+    return pd.DataFrame(poly, columns=columns_id)
