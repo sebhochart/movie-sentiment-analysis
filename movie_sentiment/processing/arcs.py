@@ -5,7 +5,7 @@ import pandas as pd
 import pickle
 from os.path import exists
 
-from movie_sentiment.ml_logic.movie_raw_score import movie_raw_score
+from movie_sentiment.ml_logic.movie_score import movie_score
 import movie_sentiment.params
 
 
@@ -32,12 +32,12 @@ def generate_all_arcs():
         sys.stdout.flush()
 
         # get the arc from the movie
-        arc_score = movie_raw_score(
-            movie_title=movie_file,
-            type='sentence',
+        arc_score = movie_score(
+            movie_file,
+            chunk_type='sentence',
             pad=50,
-            lower=False,
-            group_chunk=10
+            group_chunk=10,
+            window_size=50
         )
 
         # get the movie name and movie id from file name (id is not used but could be later)
