@@ -4,8 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-from preprocessing.scripts import split_movie_script
-from testing.vader import model as vadar
+#from preprocessing.scripts import split_movie_script
+from movie_sentiment.ml_logic.vader import model as vadar
 #from movie_sentiment_plot import movie_sentiment_plot
 
 def movie_raw_score(movie_title, type, pad, lower, group_chunk):
