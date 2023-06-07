@@ -1,4 +1,5 @@
 raw_data/
 .ipynb_checkpoints/
 preprocessing.ipynb
-movie_sentiment_analysis.egg-info/
+/movie_sentiment_analysis.egg-info/
+/movie_sentiment/ml_logic/__pycache__/

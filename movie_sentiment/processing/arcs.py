@@ -6,8 +6,8 @@ import pickle
 from os.path import exists
 
 from movie_sentiment.ml_logic.movie_score import movie_score
-import movie_sentiment.params
-
+from movie_sentiment.ml_logic.polynomial import script_2_polynomial
+from movie_sentiment.params import *
 
 
 def generate_all_arcs():
@@ -15,12 +15,8 @@ def generate_all_arcs():
     Same parameters as in the split_movie_script can be applied
     '''
 
-    DICT_PICKLE_FILE = './processed_data/arcs_dict.pickle'
-    number_movies = 10
-
     # getting the list of file names of all scripts
-    file_path = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
-    movie_list = os.listdir(file_path)
+    movie_list = os.listdir(RAW_SCRIPTS_PATH)
 
     arcs = {}
 
@@ -56,8 +52,6 @@ def generate_all_arcs():
 
 def get_all_arcs():
 
-    DICT_PICKLE_FILE = './processed_data/arcs_dict.pickle'
-
     if os.path.exists(DICT_PICKLE_FILE) == True:
         print('Loading data from pickle file')
         with open(DICT_PICKLE_FILE, 'rb') as handle:
@@ -68,3 +62,14 @@ def get_all_arcs():
         arcs = generate_all_arcs()
 
     return arcs
+
+
+def get_all_polynomials():
+
+    arcs = get_all_arcs()
+    poly = {}
+
+    for key, value in arcs.items():
+        poly[key] = script_2_polynomial(value)
+
+    return pd.DataFrame(poly)
