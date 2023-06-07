@@ -1,10 +1,9 @@
 import numpy as np
 import seaborn as sns
 import pandas as pd
-
-
 from movie_sentiment.processing.scripts import split_movie_script
 from movie_sentiment.ml_logic.vader import model as vadar
+
 
 def movie_score(movie_title, chunk_type, pad, group_chunk, window_size):
     '''
