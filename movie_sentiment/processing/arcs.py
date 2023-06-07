@@ -5,9 +5,9 @@ import pandas as pd
 import pickle
 from os.path import exists
 
-from movie_sentiment.ml_logic.movie_raw_score import movie_raw_score
-import movie_sentiment.params
-
+from movie_sentiment.ml_logic.movie_score import movie_score
+from movie_sentiment.ml_logic.polynomial import script_2_polynomial
+from movie_sentiment.params import *
 
 
 def generate_all_arcs():
@@ -15,12 +15,8 @@ def generate_all_arcs():
     Same parameters as in the split_movie_script can be applied
     '''
 
-    DICT_PICKLE_FILE = './processed_data/arcs_dict.pickle'
-    number_movies = 10
-
     # getting the list of file names of all scripts
-    file_path = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
-    movie_list = os.listdir(file_path)
+    movie_list = os.listdir(RAW_SCRIPTS_PATH)
 
     arcs = {}
 
@@ -32,12 +28,12 @@ def generate_all_arcs():
         sys.stdout.flush()
 
         # get the arc from the movie
-        arc_score = movie_raw_score(
-            movie_title=movie_file,
-            type='sentence',
+        arc_score = movie_score(
+            movie_file,
+            chunk_type='sentence',
             pad=50,
-            lower=False,
-            group_chunk=10
+            group_chunk=10,
+            window_size=50
         )
 
         # get the movie name and movie id from file name (id is not used but could be later)
@@ -56,8 +52,6 @@ def generate_all_arcs():
 
 def get_all_arcs():
 
-    DICT_PICKLE_FILE = './processed_data/arcs_dict.pickle'
-
     if os.path.exists(DICT_PICKLE_FILE) == True:
         print('Loading data from pickle file')
         with open(DICT_PICKLE_FILE, 'rb') as handle:
@@ -68,3 +62,25 @@ def get_all_arcs():
         arcs = generate_all_arcs()
 
     return arcs
+
+
+def get_all_polynomials():
+    '''Creates a DataFrame of polynomial values of movie arcs to feed our model
+    Columns of the DataFrame are 'movie_name' and then ids
+    '''
+
+    arcs = get_all_arcs()
+    poly = []
+
+    # creating a list with the movie name and the coefficients
+    for key, value in arcs.items():
+        row = script_2_polynomial(value)
+        row.insert(0, key)
+        poly.append(row)
+
+    # creating the columns name of the DataFrame
+    columns_id= [x for x in range(len(poly[0]) - 1)]
+    columns_id.insert(0, 'movie_name')
+
+    # returning the DataFrame
+    return pd.DataFrame(poly, columns=columns_id)
