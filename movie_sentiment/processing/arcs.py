@@ -5,7 +5,9 @@ import pandas as pd
 import pickle
 from os.path import exists
 
-from score_calculator.movie_raw_score import movie_raw_score
+from movie_sentiment.ml_logic.movie_raw_score import movie_raw_score
+import movie_sentiment.params
+
 
 
 def generate_all_arcs():
@@ -14,10 +16,11 @@ def generate_all_arcs():
     '''
 
     DICT_PICKLE_FILE = './processed_data/arcs_dict.pickle'
+    number_movies = 10
 
     # getting the list of file names of all scripts
-    path = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
-    movie_list = os.listdir(path)
+    file_path = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
+    movie_list = os.listdir(file_path)
 
     arcs = {}
 
@@ -31,7 +34,7 @@ def generate_all_arcs():
         # get the arc from the movie
         arc_score = movie_raw_score(
             movie_title=movie_file,
-            type='words',
+            type='sentence',
             pad=50,
             lower=False,
             group_chunk=10
@@ -44,8 +47,8 @@ def generate_all_arcs():
         arcs[movie_name] = arc_score
 
     # Save in pickle file
-
-    with open('arcs_dict.pickle', 'wb') as handle:
+    print('Saving in pickle file')
+    with open(DICT_PICKLE_FILE, 'wb') as handle:
         pickle.dump(arcs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     return arcs
@@ -56,10 +59,12 @@ def get_all_arcs():
     DICT_PICKLE_FILE = './processed_data/arcs_dict.pickle'
 
     if os.path.exists(DICT_PICKLE_FILE) == True:
+        print('Loading data from pickle file')
         with open(DICT_PICKLE_FILE, 'rb') as handle:
             arcs = pickle.load(handle)
 
     else:
-        arcs = get_all_arcs()
+        print('Generating data for movie arcs')
+        arcs = generate_all_arcs()
 
     return arcs
