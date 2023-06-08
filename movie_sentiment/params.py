@@ -5,3 +5,4 @@ DF_POLY_PICKLE_FILE = './processed_data/df_poly.pickle'
 
 #raw data
 RAW_SCRIPTS_PATH = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
+MIN_LENGHT_ARCS = 30

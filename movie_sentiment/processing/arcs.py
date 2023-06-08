@@ -8,6 +8,7 @@ from os.path import exists
 from movie_sentiment.ml_logic.movie_score import movie_score
 from movie_sentiment.ml_logic.polynomial import script_2_polynomial
 from movie_sentiment.params import *
+from movie_sentiment.processing.reshape_arc import reshaping_arc
 
 
 def generate_all_arcs():
@@ -84,3 +85,27 @@ def get_all_polynomials():
 
     # returning the DataFrame
     return pd.DataFrame(poly, columns=columns_id)
+
+def get_all_reshaped_arcs():
+    '''Creates a DataFrame of polynomial values of movie arcs to feed our model
+    Columns of the DataFrame are 'movie_name' and then ids
+    '''
+
+    arcs = get_all_arcs()
+    reshaped = []
+
+    # creating a list with the movie name and the coefficients
+    for key, value in arcs.items():
+        row = reshaping_arc(value)
+        if row == None:
+            pass
+        else:
+            row.insert(0, key)
+            reshaped.append(row)
+
+    # creating the columns name of the DataFrame
+    columns_id= [x for x in range(len(reshaped[0]) - 1)]
+    columns_id.insert(0, 'movie_name')
+
+    # returning the DataFrame
+    return pd.DataFrame(reshaped, columns=columns_id)
