@@ -6,3 +6,4 @@ MIN_LENGHT_ARCS = 30
 
 #raw data
 RAW_SCRIPTS_PATH = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
+MIN_LENGHT_ARCS = 30
