@@ -36,16 +36,21 @@ def generate_all_arcs():
             window_size=50
         )
 
-        # get the movie name and movie id from file name (id is not used but could be later)
-        movie_name, movie_id = movie_file.strip('.txt').split('_')
+        # check if the arc has the minimum required size
+        if len(arc_score) >= MIN_LENGHT_ARCS:
 
-        # add to the dictionnary
-        arcs[movie_name] = arc_score
+            # get the movie name and movie id from file name (id is not used but could be later)
+            movie_name, movie_id = movie_file.strip('.txt').split('_')
+
+            # add to the dictionnary
+            arcs[movie_name] = arc_score
 
     # Save in pickle file
     print('Saving in pickle file')
     with open(DICT_PICKLE_FILE, 'wb') as handle:
         pickle.dump(arcs, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+    print('Saved in pickle file')
 
     return arcs
 
