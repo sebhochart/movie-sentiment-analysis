@@ -15,9 +15,14 @@ def index():
 
 
 @app.get('/arc')
-def arc(movie_title):
+def arc(movie_title, recommendation = True):
+
     movie_arc = ALL_ARCS[movie_title]
-    recom_list = get_movies_recommendation()
+
+    recom_list = []
+    if recommendation == True:
+        recom_list = get_movies_recommendation()
+
     response_image = get_poster(movie_title)
 
     return {'arc' : movie_arc,
