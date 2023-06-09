@@ -10,5 +10,7 @@ def index():
 
 
 @app.get('/arc')
-def arc():
+def arc(movie_title):
+
+
     return {'the arc': 64}
