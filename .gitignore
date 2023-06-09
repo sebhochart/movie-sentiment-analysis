@@ -3,7 +3,7 @@ raw_data/
 preprocessing.ipynb
 movie_sentiment.egg-info/
 movie_sentiment_analysis.egg-info/
-movie_sentiment/__pycache__/
+movie_sentiment/__pycache__/*.pyc
 movie_sentiment/ml_logic/__pycache__/
 movie_sentiment/processing/__pycache__/
 Untitled.ipynb
