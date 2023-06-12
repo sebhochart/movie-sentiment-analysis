@@ -1,28 +1,12 @@
-#movie_sentiment_analysis
-
-
-#pickle
-#math
-
-
-
-requests
-pillow==9.5.0
-#io
-
-
 numpy
 seaborn
 pandas
-#matplotlib.pyplot
 scikit-learn==1.2.2
 vaderSentiment==3.3.2
 nltk==3.8.1
 
-#sys
-#os
-
-
+requests
+pillow==9.5.0
 
 # API
 fastapi
