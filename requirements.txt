@@ -1,1 +1,16 @@
-movie_sentiment_analysis
+numpy
+seaborn
+pandas
+scikit-learn==1.2.2
+vaderSentiment==3.3.2
+nltk==3.8.1
+
+requests
+python-dotenv
+
+# API
+fastapi
+uvicorn
+
+#gcp
+google-cloud-storage

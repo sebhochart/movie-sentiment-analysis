@@ -4,7 +4,7 @@ from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 import os
 import sys
-import movie_sentiment.params
+from movie_sentiment.params import *
 
 def split_movie_script(movie_file, chunk_type='sentence', pad=500, lower=False, rm_stopwords=False, lemmatize=False):
     ''' Gets a movie script name as an input. Cleans \n chars.
@@ -16,7 +16,7 @@ def split_movie_script(movie_file, chunk_type='sentence', pad=500, lower=False, 
     If lemmatize == True and type == words: text is lemmatized (verbs and nouns)
     '''
 
-    file_path = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
+    file_path = RAW_SCRIPTS_PATH
 
     # reading the movie script
     movie_script = open(file_path + movie_file, 'r', encoding='iso8859-1').read()
@@ -71,8 +71,8 @@ def get_all_movie_scripts(chunk_type='sentence', pad=500, lower=False, rm_stopwo
     '''
 
     # getting the list of file names of all scripts
-    path = './raw_data/screenplay_data/data/raw_texts/raw_texts/'
-    movie_list = os.listdir(path)
+    file_path = RAW_SCRIPTS_PATH
+    movie_list = os.listdir(file_path)
 
     scripts = {}
 
