@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from ..processing.arcs import get_all_dyn_arcs
 from ..poster_api import get_poster
 from ..ml_logic.recommendation import get_movies_recommendation
+from ..ml_logic.classification import get_movie_classification
 
 
 app = FastAPI()
@@ -27,9 +28,14 @@ def arc(movie_title, recommendation = True):
 
         response_image = get_poster(movie_title)
 
+        classification_info = get_movie_classification(movie_title)
+
+
         return {'arc' : movie_arc,
                 'recom' : recom_list,
-                'image' : response_image}
+                'image' : response_image,
+                'classification_cluster' : classification_info[0],
+                'classificatin_score': classification_info[1]}
     else:
         return {'message' : 'Movie not found in our db 😭, Try another movie!',
                 }
