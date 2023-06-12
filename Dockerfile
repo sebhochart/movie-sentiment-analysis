@@ -15,4 +15,4 @@ COPY Makefile Makefile
 RUN make clean
 
 
-CMD uvicorn movie_sentiment.ml_logic.movie_app:app --host 0.0.0.0
+CMD uvicorn movie_sentiment.ml_logic.movie_app:app --host 0.0.0.0 --port $PORT

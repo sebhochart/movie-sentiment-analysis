@@ -21,7 +21,7 @@ def arc(movie_title, recommendation = True):
 
     recom_list = []
     if recommendation == True:
-        recom_list = get_movies_recommendation()
+        recom_list = get_movies_recommendation(movie_title)
 
     response_image = get_poster(movie_title)
 

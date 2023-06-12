@@ -6,8 +6,11 @@ vaderSentiment==3.3.2
 nltk==3.8.1
 
 requests
-pillow==9.5.0
+python-dotenv
 
 # API
 fastapi
 uvicorn
+
+#gcp
+google-cloud-storage
