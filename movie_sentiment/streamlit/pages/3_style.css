@@ -1,9 +1,7 @@
 
 /* sidebar */
-/* .css-6qob1r.e1akgbir3 */
-.css-vk3wp9.e1akgbir11  {
+.css-6qob1r.e1akgbir3 {
   background-color: #001427;
-  width: 240px;
 }
 
 span.css-17lntkn.e1akgbir5 {
@@ -15,6 +13,7 @@ span.css-17lntkn.e1akgbir5 {
 .css-pkbazv {
   font-size: 20px;
   color: white;
+  /* background-color: #708D81; */
 }
 
 a.css-nziaof.e1akgbir6 {
@@ -24,9 +23,8 @@ a.css-nziaof.e1akgbir6 {
 /* photos */
 img {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  border-radius: 40px 10px;
+  border-radius: 30px 10px;
 }
-
 
 /* media links */
 img[alt='Foo'] {
@@ -37,7 +35,7 @@ img[alt='Foo'] {
 
 /* margin */
 .block-container.css-z5fcl4.e1g8pov64 {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 /* title */
@@ -62,7 +60,6 @@ h2 {
   border-width: 2px;
 }
 
-/* align team itens vs headers */
 .css-434r0z.esravye3 {
   height: 270px ;
   align-items: center;
@@ -72,10 +69,8 @@ h2 {
 div[data-testid='caption']  {
   color: #708D81;
   font-size: 16px;
-  font-family: "Verdana", sans-serif;
 }
 
-/* get rid of streamlit on footer */
 footer.css-164nlkn.e1g8pov61 {
   color: white;
 }
@@ -84,15 +79,18 @@ a.css-1vbd788.e1g8pov62 {
   color: white;
 }
 
+.block-container.css-z5fcl4.e1g8pov64 {
+  background-image: url(https://img.freepik.com/free-vector/abstract-background-with-hexagons_23-2148995949.jpg?w=2000);
+  background-size: cover;
+}
 
-/* align about us itens vs headers */
 .stTextLabelWrapper.css-y4bq5x.e10yodom1 {
   height: 100px;
   align-items: center;
+
 }
 
-/* font for texts */
 .css-183lzff.e170wjxx0 {
-  font-family: "Verdana", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
 }
