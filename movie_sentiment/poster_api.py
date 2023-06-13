@@ -11,4 +11,5 @@ def get_poster(movie_name):
     api_response = requests.get(url).json()['Poster']
     response_image = requests.get(api_response)
 
-    return Image.open(BytesIO(response_image.content))
+    #return Image.open(BytesIO(response_image.content))
+    return api_response
