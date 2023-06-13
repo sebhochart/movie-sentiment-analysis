@@ -16,8 +16,15 @@ st.title('Movie Sentiment Analysis')
 with st.container():
     st.header('About us')
     st.text('''
-            As data science students at Le Wagon, we developed a project to analyse
-
+            As data science students at Le Wagon, we developed a project to analyze emotional arcs of movie scripts
+            using NLP. We created models to visualize the arcs for almost 3000 movies, classified them into 6
+            types of story shapes and created a recommendation algorithm to suggest movies having the same type of
+            story.
+            ''')
+    st.text('''
+            You can use this application to find out more about how we applied sentiment analysis to movie scripts.
+            The Project tab explains the project and the steps we went through to solve these challenges.
+            The Demo tab allows you to visualize the emotional arc for each movie and the recommended movies!
             ''')
 
 st.header('Team')
