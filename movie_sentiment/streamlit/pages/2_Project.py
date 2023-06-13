@@ -54,8 +54,8 @@ st.markdown('''Then we standardized each movie arc and applied a PCA before we a
             to our dataset. After we tried several standardization and normalization techniques, as well as different
             numbers of centroids we found 6 main clusters for the movie arcs.
             ''')
-st.markdown('''The 6 centroid shapes are close to the 6 types of curves we hoped to find for Cinderella, Riches to rags,
-            Oedipus and Icarus. The 2 last centroids are close to Man in a hole and Rags to riches.
+st.markdown('''The 6 centroid shapes are close to the 6 types of curves we hoped to find: Cinderella, Riches to rags,
+            Oedipus, Icarus, Man in a hole and Rags to riches.
             ''')
 
 image = Image.open('movie_sentiment/streamlit/img/arcs_clusters.png')
