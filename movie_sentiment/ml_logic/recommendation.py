@@ -9,6 +9,7 @@ from movie_sentiment.params import *
 
 def get_movies_recommendation(movie_title, n=5):
     '''Returns n movie recommendations based on the arc, the genre and movie keywords
+    The output is a dictionnary containing a list of recommended movies and a list of the recommendation scores
     '''
 
     # get arc and metadata dataframes ready for recommentation
@@ -41,7 +42,13 @@ def get_movies_recommendation(movie_title, n=5):
     # removing the movie we are scoring so it's not recommended
     scores_df.drop([movie_title], inplace=True)
 
-    # get the top n movie ignoring the first one
-    recommended_movies = scores_df[:n].index
+    # get the top n movies and their scores
+    movie_names = scores_df[:n].index
+    movie_scores = round(scores_df[:n]['total'], 2)
 
-    return recommended_movies.to_list()
+    recommended_movies = {
+        'movie_names' : movie_names.to_list(),
+        'movie_scores' : movie_scores.to_list()
+    }
+
+    return recommended_movies
