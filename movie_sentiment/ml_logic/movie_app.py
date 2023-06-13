@@ -41,7 +41,7 @@ def arc(movie_title, recommendation = True):
 @app.get('/recom')
 def recom_df(movie_title):
 
-    recom_list = get_movies_recommendation(movie_title=movie_title, n = 5)
+    recom_list = get_movies_recommendation(movie_title=movie_title, n = 6)
     arc_list = []
     poster_list = []
     score_list = []
@@ -61,12 +61,14 @@ def recom_df(movie_title):
 
 
     result = {
-        "Title" : recom_list,
-        "Arc" : arc_list,
         "Poster" : poster_list,
+        "Title" : recom_list,
         "Score" : score_list,
+        "Arc" : arc_list,
         "Cluster" : cluster_list
         }
 
+    result = pd.DataFrame(result).sort_values(by="Score", ascending=False)
 
-    return pd.DataFrame(result)
+
+    return result

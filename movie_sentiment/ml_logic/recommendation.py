@@ -7,7 +7,7 @@ from movie_sentiment.processing.recommendation import arcs_for_reco, meta_for_re
 from movie_sentiment.params import *
 
 
-def get_movies_recommendation(movie_title, n=5):
+def get_movies_recommendation(movie_title, n=6):
     '''Returns n movie recommendations based on the arc, the genre and movie keywords
     '''
 
