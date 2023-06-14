@@ -15,10 +15,14 @@ api_reponse = requests.get(movie_sent_url_local).json()
 # the API response
 movies_list = api_reponse['movies']
 
-
 st.set_page_config(page_title="Movie Sentiment Analysis - Demo",
                    page_icon="🎥",
                    layout="wide")
+
+with open('movie_sentiment/streamlit/pages/3_style.css') as style_css:
+    st.markdown(f'<style>{style_css.read()}</style>', unsafe_allow_html=True)
+
+
 with st.container():
 
     #movie arc section
@@ -72,7 +76,8 @@ with st.container():
 
         movie_arc_plot_df = pd.DataFrame(movie_arc_plot)
         col2.line_chart(movie_arc_plot_df)
-
+        # with col2:
+        #     sns.lineplot(data=movie_arc_plot_df, pallete= ['#708D81', '#F4D58D' ])
 
 
 

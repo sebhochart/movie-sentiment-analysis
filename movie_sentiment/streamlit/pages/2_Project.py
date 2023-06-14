@@ -5,6 +5,8 @@ st.set_page_config(page_title="Movie Sentiment Analysis - The Project",
                    page_icon="🎥",
                    layout="centered")
 
+with open('movie_sentiment/streamlit/pages/2_style.css') as style_css:
+    st.markdown(f'<style>{style_css.read()}</style>', unsafe_allow_html=True)
 
 st.title('Movie Sentiment Analysis')
 st.header('The Project')

@@ -3,25 +3,24 @@ from PIL import Image
 
 st.set_page_config(page_title="Movie Sentiment Analysis - Home",
                    page_icon="🎥",
-                   layout="wide")
+                   layout="centered")
 
 
 
 with open('movie_sentiment/streamlit/style.css') as style_css:
     st.markdown(f'<style>{style_css.read()}</style>', unsafe_allow_html=True)
 
-
 st.title('Movie Sentiment Analysis')
 
 with st.container():
     st.header('About us')
-    st.text('''
+    st.markdown('''
             As data science students at Le Wagon, we developed a project to analyze emotional arcs of movie scripts
             using NLP. We created models to visualize the arcs for almost 3000 movies, classified them into 6
             types of story shapes and created a recommendation algorithm to suggest movies having the same type of
             story.
             ''')
-    st.text('''
+    st.markdown('''
             You can use this application to find out more about how we applied sentiment analysis to movie scripts.
             The Project tab explains the project and the steps we went through to solve these challenges.
             The Demo tab allows you to visualize the emotional arc for each movie and the recommended movies!
