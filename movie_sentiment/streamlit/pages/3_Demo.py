@@ -51,6 +51,8 @@ with st.container():
         movie_arc = api_reponse['arc']
         movie_recom = api_reponse['recom']
         movie_poster = api_reponse['image']
+        if movie_poster == "N/A":
+            movie_poster = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
         movie_score = api_reponse['classificatin_score']
         movie_cluster = api_reponse['classification_cluster']
         movie_poly_fit = api_reponse['poly_fit']
