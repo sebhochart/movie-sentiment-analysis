@@ -47,7 +47,7 @@ def compute_meta_for_reco():
     movie_meta = pd.read_csv(METADATA_PATH)
 
     # keep necessary columns
-    movie_meta = movie_meta[['title', 'keywords', 'genres']]
+    movie_meta = movie_meta[['imdbid', 'title', 'keywords', 'genres']]
 
     # combine keywords and genres columns and clean
     movie_meta['meta'] = movie_meta['genres'] + ', ' + movie_meta['keywords']
@@ -64,7 +64,19 @@ def compute_meta_for_reco():
     df_meta = svd.fit_transform(count_df)
 
     # convert to DataFrame
-    df_meta = pd.DataFrame(df_meta, index=movie_meta.title.tolist())
+    df_meta = pd.DataFrame(df_meta, index=movie_meta.imdbid.tolist())
+
+    # get id, movie name matching
+    with open(IDS_PICKLE_FILE, 'rb') as handle:
+        ids = pickle.load(handle)
+
+    # match ids with movie names
+    for key, value in ids.items():
+        if key in df_meta.index:
+            df_meta.loc[key,'movie_name'] = value
+
+    # set movie name as index
+    df_meta.set_index('movie_name', inplace=True)
 
     # Save in pickle file
     print('Saving in pickle file')

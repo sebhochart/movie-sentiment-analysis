@@ -1,5 +1,6 @@
 # processed data
 DICT_PICKLE_FILE = './movie_sentiment/processed_data/arcs_dict.pickle'
+IDS_PICKLE_FILE = './movie_sentiment/processed_data/ids_dict.pickle'
 MIN_LENGHT_ARCS = 30
 DICT_PICKLE_FILE_DYN_AVG = './movie_sentiment/processed_data/arcs_dict_dyn_avg.pickle'
 
