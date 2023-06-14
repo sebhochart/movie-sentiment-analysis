@@ -41,8 +41,8 @@ with st.container():
         movie_sent_url_local = 'http://127.0.0.1:8000/arc'
         params = dict(
             movie_title=select_movie,
-            recommendation=True,
-            polynomial=True
+            recommendation='active',
+            polynomial='active'
             )
 
         api_reponse = requests.get(movie_sent_url_local, params=params).json()
