@@ -19,7 +19,11 @@ def generate_all_arcs():
     # getting the list of file names of all scripts
     movie_list = os.listdir(RAW_SCRIPTS_PATH)
 
+    # dictionnary for movie arcs
     arcs = {}
+
+    # dictionnary for movie id/name matching used in metadata recommendation
+    ids = {}
 
     for index, movie_file in enumerate(movie_list):
 
@@ -43,17 +47,23 @@ def generate_all_arcs():
             # get the movie name and movie id from file name (id is not used but could be later)
             movie_name, movie_id = movie_file.strip('.txt').split('_')
 
-            # add to the dictionnary
+            # add to the dictionnaries
             arcs[movie_name] = arc_score
+            ids[int(movie_id.lstrip('0'))] = movie_name
 
-    # Save in pickle file
+    # Save the arcs in pickle file
     print('Saving in pickle file')
     with open(DICT_PICKLE_FILE, 'wb') as handle:
         pickle.dump(arcs, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     print('Saved in pickle file')
 
+    # Save the ids and movie names in pickle file
+    with open(IDS_PICKLE_FILE, 'wb') as handle:
+        pickle.dump(ids, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
     return arcs
+
 
 def generate_all_arcs_new_avg():
     ''' Generates a dictionnary with the arcs of all movies.
