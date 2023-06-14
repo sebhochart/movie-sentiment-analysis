@@ -1,6 +1,5 @@
 
 /* sidebar */
-/* .css-6qob1r.e1akgbir3 */
 .css-vk3wp9.e1akgbir11  {
   background-color: #001427;
   width: 240px;
@@ -95,4 +94,12 @@ a.css-1vbd788.e1g8pov62 {
 .css-183lzff.e170wjxx0 {
   font-family: "Verdana", sans-serif;
   font-size: 16px;
+}
+
+/* background */
+.main.css-uf99v8.e1g8pov65 {
+  background-image: url(../movie_sentiment/streamlit/img/background_image.png);
+  /* background-image: url("https://media.istockphoto.com/id/1322463784/vector/cinema-white-screen-in-the-cinema-vector-illustration.jpg?s=612x612&w=0&k=20&c=Vw7GvC9grW7PeIwAtplEwRlfdJSvcoLcNsQlulpvJC8="); */
+  /* background-image: url('https://drive.google.com/file/d/1Wls2_wdhLR_sbiLdbem5HHHKrDanJH2g/view?usp=sharing/background_image.png'); */
+  background-size: cover;
 }
