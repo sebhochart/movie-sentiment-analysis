@@ -21,6 +21,7 @@ st.set_page_config(page_title="Movie Sentiment Analysis - Demo",
                    layout="wide")
 with st.container():
 
+    #movie arc section
     with st.container():
 
         st.title('Movie Sentiment Analysis')
@@ -98,7 +99,6 @@ with st.container():
         movie_sent_url_local = 'http://127.0.0.1:8000/recom'
         params = dict(
             movie_title=select_movie,
-
             )
         api_reponse = requests.get(movie_sent_url_local, params=params).json()
         api_reponse = pd.DataFrame(api_reponse)

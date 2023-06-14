@@ -26,13 +26,23 @@ def movies_list():
 def arc(movie_title, recommendation = True, polynomial=True):
 
     if movie_title in ALL_ARCS.keys():
+
+
+        recom_list = ['Set the recommendation parameter to True to receive recommndations']
+        movie_arc = ['No movie arc returned']
+        response_image = ['No image returned']
+        classification_info = ('No cluster','No Score')
+        y_fit = ['Set the polynomial parameter to True to get the polynomial fit coefficients']
+
         movie_arc = ALL_ARCS[movie_title]
-        recom_list = ['set the recommendation parameter to True to receive recommndations']
+
+
+
         if recommendation:
             recom_func_response = get_movies_recommendation(movie_title=movie_title, n = 6)
             recom_list = recom_func_response['movie_names']
 
-        y_fit = ['Set the polynomial parameter to True to get the polynomial fit coefficients']
+
         if polynomial:
             movie_arc_array = np.array(movie_arc)
             coeffs = script_2_polynomial(movie_arc_array, plot = False)
@@ -40,10 +50,12 @@ def arc(movie_title, recommendation = True, polynomial=True):
             x_fit = np.linspace(start=0, stop=movie_arc_array.shape[0], num=movie_arc_array.shape[0])
             y_fit = list(np.polyval(coeffs, x_fit))
 
-
-
         response_image = get_poster(movie_title)
         classification_info = get_movie_classification(movie_title)
+
+
+
+
 
         return {'arc' : movie_arc,
                 'recom' : recom_list,
@@ -58,6 +70,11 @@ def arc(movie_title, recommendation = True, polynomial=True):
 
 @app.get('/recom')
 def recom_df(movie_title):
+
+    recom_list = []
+    recom_similarity_score = []
+
+
     recom_func = get_movies_recommendation(movie_title=movie_title, n = 6)
     recom_list = recom_func['movie_names']
     recom_similarity_score = recom_func['movie_scores']
@@ -86,10 +103,8 @@ def recom_df(movie_title):
         "Arc" : arc_list,
         "Cluster" : cluster_list,
         "Cluster Score" : cluster_score_list,
-
         }
 
     result = pd.DataFrame(result).sort_values(by="Similarity Score", ascending=False)
-
 
     return result
