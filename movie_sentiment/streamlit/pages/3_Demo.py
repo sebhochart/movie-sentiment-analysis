@@ -84,9 +84,8 @@ with st.container():
         #col2.line_chart(movie_poly_fit)
 
         # plot info
-        movie_score_str = f"Arc score: {movie_score}"
-        col2.write(movie_score_str)
-        movie_cluster_str = f"This movie has a {movie_cluster} arc."
+        percentage_score = "{:.0%}".format(movie_score)
+        movie_cluster_str = f"This movie has {percentage_score} similarity with **{movie_cluster}** arc."
         col2.write(movie_cluster_str)
 
 
@@ -110,42 +109,42 @@ with st.container():
 
 
         with st.container():
-            col1, col2, col3, col4, col5= st.columns([3,3,1,3,3])
+            col1, col2, col3, col4, col5= st.columns([2,3,1,2,3])
 
-            col1.image(api_reponse.iloc[0,0], width=260)
+            col1.image(api_reponse.iloc[0,0])
             col2.subheader(f'{api_reponse.iloc[0,1]} - {api_reponse.iloc[0,2]}')
-            col2.line_chart(api_reponse.iloc[0,3], width=300)
+            col2.line_chart(api_reponse.iloc[0,3], height=250, use_container_width=True)
 
-            col4.image(api_reponse.iloc[1,0], width=260)
+            col4.image(api_reponse.iloc[1,0])
             col5.subheader(f'{api_reponse.iloc[1,1]} - {api_reponse.iloc[1,2]}')
-            col5.line_chart(api_reponse.iloc[1,3], width=300)
+            col5.line_chart(api_reponse.iloc[1,3], height=250, use_container_width=True)
 
 
         with st.container():
-            col1, col2, col3, col4, col5= st.columns([3,3,1,3,3])
+            col1, col2, col3, col4, col5= st.columns([2,3,1,2,3])
 
         with st.container():
-            col1, col2, col3, col4, col5= st.columns([3,3,1,3,3])
+            col1, col2, col3, col4, col5= st.columns([2,3,1,2,3])
 
-            col1.image(api_reponse.iloc[2,0], width=260)
+            col1.image(api_reponse.iloc[2,0])
             col2.subheader(f'{api_reponse.iloc[2,1]} - {api_reponse.iloc[2,2]}')
-            col2.line_chart(api_reponse.iloc[2,3], width=300)
+            col2.line_chart(api_reponse.iloc[2,3], height=250, use_container_width=True)
 
-            col4.image(api_reponse.iloc[3,0], width=260)
+            col4.image(api_reponse.iloc[3,0])
             col5.subheader(f'{api_reponse.iloc[3,1]} - {api_reponse.iloc[3,2]}')
-            col5.line_chart(api_reponse.iloc[3,3], width=300)
+            col5.line_chart(api_reponse.iloc[3,3], height=250, use_container_width=True)
 
 
         with st.container():
-            col1, col2, col3, col4, col5= st.columns([3,3,1,3,3])
+            col1, col2, col3, col4, col5= st.columns([2,3,1,2,3])
 
         with st.container():
-            col1, col2, col3, col4, col5= st.columns([3,3,1,3,3])
+            col1, col2, col3, col4, col5= st.columns([2,3,1,2,3])
 
-            col1.image(api_reponse.iloc[4,0], width=260)
+            col1.image(api_reponse.iloc[4,0])
             col2.subheader(f'{api_reponse.iloc[4,1]} - {api_reponse.iloc[4,2]}')
-            col2.line_chart(api_reponse.iloc[4,3], width=300)
+            col2.line_chart(api_reponse.iloc[4,3], height=250, use_container_width=True)
 
-            col4.image(api_reponse.iloc[5,0], width=260)
+            col4.image(api_reponse.iloc[5,0])
             col5.subheader(f'{api_reponse.iloc[5,1]} - {api_reponse.iloc[5,2]}')
-            col5.line_chart(api_reponse.iloc[5,3], width=300)
+            col5.line_chart(api_reponse.iloc[5,3], height=250, use_container_width=True)

@@ -7,7 +7,7 @@ DICT_PICKLE_FILE_DYN_AVG = './movie_sentiment/processed_data/arcs_dict_dyn_avg.p
 CLASSIFIED_ARCS_PICKLE_FILE = './movie_sentiment/processed_data/classified_movies_arcs.pickle'
 CENTROID_ARCS_PICKLE_FILE = './movie_sentiment/processed_data/centroid_arcs.pickle'
 ARCS_SHAPES = {
-    0: '~ Rags to riches',
+    0: 'Rags to riches',
     1: 'Riches to rags',
     2: 'Icarus',
     3: 'Oedipus',
