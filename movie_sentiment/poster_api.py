@@ -11,6 +11,7 @@ def get_poster(movie_name):
     if api_response['Response'] == "True":
         response = api_response['Poster']
     else:
-        response = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
+        response = 'movie_sentiment/streamlit/img/default-movie.png'
+        'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
 
     return response

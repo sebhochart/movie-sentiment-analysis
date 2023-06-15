@@ -27,7 +27,7 @@ with open('movie_sentiment/streamlit/pages/3_style.css') as style_css:
 
 with st.container():
 
-    #movie arc section
+    # movie selection section
     with st.container():
 
         st.title('CinemArcs')
@@ -35,7 +35,7 @@ with st.container():
         movie_titles = sorted(movies_list)
         select_movie = st.selectbox('Select a movie', movie_titles )
 
-        with st.spinner('Wait for it...'):
+        with st.spinner('Wait...'):
             time.sleep(2.5)
 
 
@@ -55,14 +55,15 @@ with st.container():
         movie_recom = api_reponse['recom']
         movie_poster = api_reponse['image']
         if movie_poster == "N/A":
-            movie_poster = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
+            movie_poster = 'movie_sentiment/streamlit/img/default-movie.png'
+            #movie_poster = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
         movie_score = api_reponse['classificatin_score']
         movie_cluster = api_reponse['classification_cluster']
         movie_poly_fit = api_reponse['poly_fit']
 
 
 
-
+    # movie arc container
     with st.container():
 
         col1, col2 = st.columns([1,2.5])
@@ -96,7 +97,7 @@ with st.container():
         st.header(f'Did you like {select_movie}?')
         st.subheader('Checkout our recommendations!')
 
-        with st.spinner('Wait for it...'):
+        with st.spinner('Wait...'):
             time.sleep(2)
         # recommendations
         #API Set up
