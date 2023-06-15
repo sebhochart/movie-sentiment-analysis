@@ -35,8 +35,8 @@ with st.container():
         movie_titles = sorted(movies_list)
         select_movie = st.selectbox('Select a movie', movie_titles )
 
-        with st.spinner('Wait...'):
-            time.sleep(2.5)
+        with st.spinner('Loading ...'):
+            time.sleep(2)
 
 
         #API Set up
@@ -54,9 +54,6 @@ with st.container():
         movie_arc = api_reponse['arc']
         movie_recom = api_reponse['recom']
         movie_poster = api_reponse['image']
-        if movie_poster == "N/A":
-            movie_poster = 'movie_sentiment/streamlit/img/default-movie.png'
-            #movie_poster = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
         movie_score = api_reponse['classificatin_score']
         movie_cluster = api_reponse['classification_cluster']
         movie_poly_fit = api_reponse['poly_fit']
@@ -98,7 +95,7 @@ with st.container():
         st.header(f'Did you like {select_movie}?')
         st.subheader('Checkout our recommendations!')
 
-        with st.spinner('Wait...'):
+        with st.spinner('Loading ...'):
             time.sleep(2)
         # recommendations
         #API Set up
