@@ -19,7 +19,7 @@ from movie_sentiment.params import *
     # return response
 
 def get_poster(movie_name):
-
+    '''Gets the api from a movie id'''
     with open(IDS_PICKLE_FILE, 'rb') as handle:
         ids = pickle.load(handle)
 
