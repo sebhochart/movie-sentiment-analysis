@@ -86,9 +86,10 @@ with st.container():
 
 
         # plot info
-        percentage_score = "{:.0%}".format(movie_score)
-        movie_cluster_str = f"This movie has {percentage_score} similarity with **{movie_cluster}** arc."
-        col2.markdown(movie_cluster_str)
+        if movie_score > 0.5:
+            percentage_score = "{:.0%}".format(movie_score)
+            movie_cluster_str = f"This movie has {percentage_score} similarity with **{movie_cluster}** arc."
+            col2.markdown(movie_cluster_str)
 
 
     ############ recommendation container
