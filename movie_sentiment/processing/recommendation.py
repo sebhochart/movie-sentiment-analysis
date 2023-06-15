@@ -49,18 +49,21 @@ def compute_meta_for_reco():
     # keep necessary columns
     movie_meta = movie_meta[['imdbid', 'title', 'keywords', 'genres']]
 
-    # combine keywords and genres columns and clean
+    # old code for genres + keywords
     movie_meta['meta'] = movie_meta['genres'] + ', ' + movie_meta['keywords']
     movie_meta['meta'] = movie_meta['meta'].str.replace(',', '')
     movie_meta['meta'] = movie_meta['meta'].fillna('')
 
+    #use only genres
+    movie_meta['genres'] = movie_meta['genres'].fillna('')
+
     # convert to numerical vectors
     count = CountVectorizer()
-    count_matrix = count.fit_transform(movie_meta['meta'])
+    count_matrix = count.fit_transform(movie_meta['genres'])
     count_df = pd.DataFrame(count_matrix.toarray(), index=movie_meta.index.tolist())
 
-    # reduce to 200 dimensions
-    svd = TruncatedSVD(n_components=200)
+    # reduce to 20 dimensions (200 for genres + keywords)
+    svd = TruncatedSVD(n_components=20)
     df_meta = svd.fit_transform(count_df)
 
     # convert to DataFrame
