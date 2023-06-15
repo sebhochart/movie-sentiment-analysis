@@ -32,11 +32,12 @@ with st.container():
 
         st.title('CinemArcs')
 
-        with st.spinner('Wait for it...'):
-            time.sleep(3)
-
         movie_titles = sorted(movies_list)
         select_movie = st.selectbox('Select a movie', movie_titles )
+
+        with st.spinner('Wait for it...'):
+            time.sleep(2.5)
+
 
         #API Set up
         movie_sent_url = 'https://movsentapi-qthbj7hd7q-ew.a.run.app/arc'
