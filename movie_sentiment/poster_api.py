@@ -33,7 +33,7 @@ def get_poster(movie_name):
 
     api_response = requests.get(url).json()
 
-    if api_response['Response'] == "True":
+    if api_response['Response'] == "True" and api_response['Poster'] != 'N/A':
         response = api_response['Poster']
     else:
         response = 'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg'
