@@ -18,12 +18,14 @@ def generate_all_arcs():
 
     # getting the list of file names of all scripts
     movie_list = os.listdir(RAW_SCRIPTS_PATH)
+    movie_list.sort()
 
     # dictionnary for movie arcs
     arcs = {}
 
     # dictionnary for movie id/name matching used in metadata recommendation
     ids = {}
+    previous_movie_name = ''
 
     for index, movie_file in enumerate(movie_list):
 
@@ -41,15 +43,17 @@ def generate_all_arcs():
             window_size=50
         )
 
-        # check if the arc has the minimum required size
-        if len(arc_score) >= MIN_LENGHT_ARCS:
+        # get the movie name and movie id from file name (id is not used but could be later)
+        movie_name, movie_id = movie_file.strip('.txt').split('_')
 
-            # get the movie name and movie id from file name (id is not used but could be later)
-            movie_name, movie_id = movie_file.strip('.txt').split('_')
+        # check if the arc has the minimum required size
+        if (len(arc_score) >= MIN_LENGHT_ARCS) and (movie_name != previous_movie_name):
 
             # add to the dictionnaries
             arcs[movie_name] = arc_score
             ids[int(movie_id.lstrip('0'))] = movie_name
+
+        previous_movie_name = movie_name
 
     # Save the arcs in pickle file
     print('Saving in pickle file')
@@ -72,8 +76,10 @@ def generate_all_arcs_new_avg():
 
     # getting the list of file names of all scripts
     movie_list = os.listdir(RAW_SCRIPTS_PATH)
+    movie_list.sort()
 
     arcs = {}
+    previous_movie_name = ''
 
     for index, movie_file in enumerate(movie_list):
 
@@ -91,14 +97,16 @@ def generate_all_arcs_new_avg():
             window_size=50
         )
 
-        # check if the arc has the minimum required size
-        if len(arc_score) >= MIN_LENGHT_ARCS:
+        # get the movie name and movie id from file name (id is not used but could be later)
+        movie_name, movie_id = movie_file.strip('.txt').split('_')
 
-            # get the movie name and movie id from file name (id is not used but could be later)
-            movie_name, movie_id = movie_file.strip('.txt').split('_')
+        # check if the arc has the minimum required size
+        if (len(arc_score) >= MIN_LENGHT_ARCS) and (movie_name != previous_movie_name):
 
             # add to the dictionnary
             arcs[movie_name] = arc_score
+
+        previous_movie_name = movie_name
 
     # Save in pickle file
     print('Saving in pickle file')
