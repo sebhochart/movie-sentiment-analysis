@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="Movie Sentiment Analysis - Home",
+st.set_page_config(page_title="CinemArcs - Home",
                    page_icon="🎥",
                    layout="centered")
 
@@ -10,7 +10,7 @@ st.set_page_config(page_title="Movie Sentiment Analysis - Home",
 with open('movie_sentiment/streamlit/style.css') as style_css:
     st.markdown(f'<style>{style_css.read()}</style>', unsafe_allow_html=True)
 
-st.title('Movie Sentiment Analysis')
+st.title('CinemArcs')
 
 with st.container():
     st.header('About us')
