@@ -7,12 +7,11 @@ import matplotlib.pyplot as plt
 import matplotlib.spines as sps
 import seaborn as sns
 import time
-#from movie_sentiment.processing.arcs import get_all_dyn_arcs
 
- #API Set up
-movie_sent_url = 'https://movsentapi-qthbj7hd7q-ew.a.run.app/arc'
-movie_sent_url_local = 'http://127.0.0.1:8000/movies_list'
-api_reponse = requests.get(movie_sent_url_local).json()
+#API Set up
+movie_sent_url = 'https://movsentapi-qthbj7hd7q-ew.a.run.app/movies_list'
+#movie_sent_url_local = 'http://127.0.0.1:8000/movies_list'
+api_reponse = requests.get(movie_sent_url).json()
 
 # the API response
 movies_list = api_reponse['movies']
@@ -41,14 +40,14 @@ with st.container():
 
         #API Set up
         movie_sent_url = 'https://movsentapi-qthbj7hd7q-ew.a.run.app/arc'
-        movie_sent_url_local = 'http://127.0.0.1:8000/arc'
+        #movie_sent_url_local = 'http://127.0.0.1:8000/arc'
         params = dict(
             movie_title=select_movie,
             recommendation='active',
             polynomial='active'
             )
 
-        api_reponse = requests.get(movie_sent_url_local, params=params).json()
+        api_reponse = requests.get(movie_sent_url, params=params).json()
 
         # the API response
         movie_arc = api_reponse['arc']
@@ -100,11 +99,11 @@ with st.container():
         # recommendations
         #API Set up
         movie_sent_url = 'https://movsentapi-qthbj7hd7q-ew.a.run.app/recom'
-        movie_sent_url_local = 'http://127.0.0.1:8000/recom'
+        #movie_sent_url_local = 'http://127.0.0.1:8000/recom'
         params = dict(
             movie_title=select_movie,
             )
-        api_reponse = requests.get(movie_sent_url_local, params=params).json()
+        api_reponse = requests.get(movie_sent_url, params=params).json()
         api_reponse = pd.DataFrame(api_reponse)
 
 
