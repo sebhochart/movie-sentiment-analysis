@@ -48,6 +48,7 @@ img[alt='Foo'] {
   font-weight: 300;
   word-spacing: 3px;
   line-height: 2em;
+  background-image: url(img/default-movie.png);
 
 }
 
@@ -97,9 +98,7 @@ a.css-1vbd788.e1g8pov62 {
 }
 
 /* background */
-.main.css-uf99v8.e1g8pov65 {
-  background-image: url(../movie_sentiment/streamlit/img/background_image.png);
-  /* background-image: url("https://media.istockphoto.com/id/1322463784/vector/cinema-white-screen-in-the-cinema-vector-illustration.jpg?s=612x612&w=0&k=20&c=Vw7GvC9grW7PeIwAtplEwRlfdJSvcoLcNsQlulpvJC8="); */
-  /* background-image: url('https://drive.google.com/file/d/1Wls2_wdhLR_sbiLdbem5HHHKrDanJH2g/view?usp=sharing/background_image.png'); */
+/* .main.css-uf99v8.e1g8pov65 {
+  background-image: url(../movie_sentiment/streamlit/img/default-movie.png);
   background-size: cover;
-}
+} */
