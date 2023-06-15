@@ -6,7 +6,7 @@ COPY requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
 # Install the Movie sentiment package
-COPY movie_sentiment / movie_sentiment
+COPY movie_sentiment /movie_sentiment
 COPY setup.py setup.py
 RUN pip install --upgrade pip
 
